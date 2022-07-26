@@ -1,4 +1,4 @@
-BIENVENUE A TOI O VISITEUR !!
+BIENVENUE A TOI  VISITEUR !!
 ======================
 
 ![Chris](SQL-logo.png)
