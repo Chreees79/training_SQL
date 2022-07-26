@@ -1,0 +1,65 @@
+# Récupérer tous les albums
+-----------------------------------------------------
+
+SELECT * FROM albums;
+
+
+# Récupérer tous les albums dont le titre contient "Great"
+------------------------------------------------------
+
+SELECT * FROM albums WHERE Title LIKE '%great%';
+
+
+# Donner le nombre total d'albums contenus dans la base (sans regarder les id bien sûr)
+----------------------------------------------------------------------
+
+ SELECT COUNT (*) FROM albums;
+
+
+#Supprimer tous les albums dont le nom contient "music"
+-------------------------------------------------------
+
+ DELETE FROM albums WHERE Title LIKE '%music%';
+
+
+# Récupérer tous les albums écrits par AC/DC (avec cette consigne deux possibilités)
+#une ou ce sont les albums dont l'artiste est notifié AC/DC
+---------------------------------------------------------
+
+ SELECT  * FROM albums WHERE ArtistId = 1;
+
+
+ #Récupérer tous les albums dans le cas où le seul compositeur sont les membres d'AC/DC:
+------------------------------------------------------------
+
+ SELECT DISTINCT Title FROM albums JOIN tracks ON albums.albumid = tracks.albumid WHERE composer = 'AC/DC';
+
+
+# Récupérer tous les titres des albums de AC/DC
+------------------------------------------------------------
+
+SELECT trackid, tracks.name AS Track, albums.title AS Album, artists.name AS Artist FROM tracks INNER JOIN albums ON albums.albumid = tracks.albumid INNER JOIN artists ON artists.artistid = albums.artistid WHERE artists.artistid = 1;
+
+
+# Récupérer la liste des titres de l'album "Let There Be Rock"
+------------------------------------------------------------------
+
+SELECT trackid, tracks.name AS Track, albums.title AS Album FROM tracks INNER JOIN albums ON albums.albumid = tracks.albumid WHERE albums.albumid = 4;
+
+
+# Afficher le prix de cet album ainsi que sa durée totale
+---------------------------------------------------------------------
+
+SELECT SUM(UnitPrice) AS TotalPrice, SUM(Milliseconds) As TotalTime FROM tracks WHERE tracks.albumid = 4;
+
+
+# Afficher le coût de l'intégralité de la discographie de "Deep Purple"
+-------------------------------------------------------------------
+
+SELECT SUM(UnitPrice) AS TotalPrice FROM tracks INNER JOIN albums ON albums.albumid = tracks.albumid INNER JOIN artists ON artists.artistid = albums.artistid WHERE artists.artistid = 58;
+
+
+# Créer l'album de ton artiste favori en base, en renseignant correctement les trois tables albums, artists et tracks
+-------------------------------------------------------------------------
+
+

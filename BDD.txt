@@ -1,0 +1,89 @@
+MOOCademy
+-------------------
+table cours: id, titre, description
+table leçon: id, titre, body, cours_id
+
+CREATE TABLE courses (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `titre` TEXT,
+  `description` TEXT
+);
+
+CREATE TABLE lesson (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `titre` TEXT,
+  `body` TEXT,
+  `cours_id` INTEGER
+);
+
+=========================================================
+
+
+The Hacking Pinterest
+--------------------
+table user_pinterest: id, name
+table pin: id, URL, user_id
+table comment: id, obj, pin_id, user_id
+
+CREATE TABLE user_pinterest (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` TEXT
+);
+
+CREATE TABLE pin (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `URL` TEXT,
+  `user_id` INTEGER
+);
+
+CREATE TABLE comment (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `obj` TEXT,
+  `pin_id` INTEGER,
+  `user_id` INTEGER
+);
+
+=====================================================
+
+The hacking News
+--------------------
+table user: id, name
+table link: id, link, user_id
+table comment_news: id, obj, link_id, user_id, comment_id
+
+CREATE TABLE user_news (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` TEXT
+);
+
+CREATE TABLE link (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `link` TEXT,
+  `user_id` INTEGER
+);
+
+CREATE TABLE comment_news (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `obj` TEXT,
+  `link_id` INTEGER,
+  `user_id` INTEGER,
+  `comment_id` INTEGER
+);
+
+==========================================================
+
+The Hacking Class
+--------------------
+students: id, name, class_id
+cours: id, name
+
+CREATE TABLE classes (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` TEXT
+);
+
+CREATE TABLE students (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `name` TEXT,
+  `class_id` INTEGER
+);
